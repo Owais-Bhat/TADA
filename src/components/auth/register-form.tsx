@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import type { Database } from "@/lib/supabase/database.types";
-import { buildProfileInsert, isProfileActive } from "@/lib/profile";
+import { buildProfileInsert } from "@/lib/profile";
 import { getRoleHome } from "@/lib/roles";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -13,44 +13,48 @@ import { GlassCard } from "@/components/ui/glass-card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export function LoginForm() {
+export function RegisterForm() {
   const router = useRouter();
   const supabase = createClient();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
 
-  async function handleLogin(e: React.FormEvent) {
+  async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setMessage(null);
 
-    const { error: signInError } = await supabase.auth.signInWithPassword({
+    const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: {
+          name,
+        },
+      },
     });
 
-    if (signInError) {
-      setError(signInError.message);
+    if (signUpError) {
+      setError(signUpError.message);
       setLoading(false);
       return;
     }
 
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    if (!user) {
-      setError("We could not load your session. Please try again.");
+    if (!data.session || !data.user) {
+      setMessage("Account created. Check your email to verify your account.");
       setLoading(false);
       return;
     }
 
     const { data: profileData, error: profileError } = await supabase
       .from("profiles")
-      .select("role, is_active")
-      .eq("id", user.id)
+      .select("role")
+      .eq("id", data.user.id)
       .maybeSingle();
 
     if (profileError) {
@@ -61,20 +65,19 @@ export function LoginForm() {
 
     let profile = profileData as Pick<
       Database["public"]["Tables"]["profiles"]["Row"],
-      "is_active" | "role"
+      "role"
     > | null;
 
     if (!profile) {
       const { data: insertedProfile, error: insertError } = await supabase
         .from("profiles")
-        .insert(buildProfileInsert(user) as never)
-        .select("role, is_active")
+        .insert(buildProfileInsert(data.user) as never)
+        .select("role")
         .single();
 
       if (insertError) {
-        await supabase.auth.signOut();
         setError(
-          "We could not finish setting up your profile. Please run the latest Supabase schema and try again.",
+          "Account created, but profile setup is incomplete. Please run the latest Supabase schema and sign in again.",
         );
         setLoading(false);
         return;
@@ -82,81 +85,88 @@ export function LoginForm() {
 
       profile = insertedProfile as Pick<
         Database["public"]["Tables"]["profiles"]["Row"],
-        "is_active" | "role"
+        "role"
       >;
     }
 
-    if (!isProfileActive(profile)) {
-      await supabase.auth.signOut();
-      setError("Your account is not active right now.");
-      setLoading(false);
-      return;
-    }
-
-    router.push(getRoleHome(profile.role));
+    router.push(getRoleHome(profile?.role ?? "Regular"));
     router.refresh();
   }
 
   return (
     <GlassCard
-      className="w-full max-w-md border-slate-200 bg-white/92 text-slate-900 shadow-2xl shadow-violet-950/10"
+      className="w-full max-w-md border-slate-200 bg-white/92 text-slate-900 shadow-2xl shadow-emerald-950/10"
       hover={false}
     >
       <div className="mb-8 text-center">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-100">
-          <ShieldCheck className="h-6 w-6 text-violet-700" />
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100">
+          <Sparkles className="h-6 w-6 text-emerald-700" />
         </div>
         <h1 className="mb-2 font-heading text-3xl font-bold">
-          <span className="grad-text">Welcome back</span>
+          <span className="grad-text">Create your workspace</span>
         </h1>
         <p className="text-sm text-slate-500">
-          Sign in to manage expenses, approvals, and reimbursements.
+          Start with your employee account and let Supabase handle the rest.
         </p>
       </div>
 
-      <form onSubmit={handleLogin} className="space-y-4">
+      <form onSubmit={handleRegister} className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="name">Full name</Label>
           <Input
-            id="email"
-            type="email"
-            placeholder="you@company.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Ayesha Khan"
             required
             className="bg-white"
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="register-email">Work email</Label>
           <Input
-            id="password"
+            id="register-email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@company.com"
+            required
+            className="bg-white"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="register-password">Password</Label>
+          <Input
+            id="register-password"
             type="password"
-            placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Use at least 8 characters"
+            minLength={8}
             required
             className="bg-white"
           />
         </div>
 
         {error ? <p className="text-center text-sm text-rose-300">{error}</p> : null}
+        {message ? <p className="text-center text-sm text-emerald-300">{message}</p> : null}
 
         <Button
           type="submit"
-          className="w-full bg-violet-100 text-violet-950 hover:bg-violet-200"
+          className="w-full bg-emerald-100 text-emerald-950 hover:bg-emerald-200"
           disabled={loading}
         >
           <ArrowRight className="mr-2 h-4 w-4" />
-          {loading ? "Signing in..." : "Sign In"}
+          {loading ? "Creating account..." : "Create account"}
         </Button>
       </form>
 
       <p className="mt-6 text-center text-sm text-slate-500">
-        Don&apos;t have an account?{" "}
-        <Link href="/auth/register" className="text-violet-700 hover:underline">
-          Sign up
+        Already have an account?{" "}
+        <Link href="/auth/login" className="text-emerald-700 hover:underline">
+          Sign in
         </Link>
       </p>
     </GlassCard>
