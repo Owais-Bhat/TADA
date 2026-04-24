@@ -55,13 +55,13 @@ export default async function ApprovalsPage() {
   return (
     <div className="space-y-8">
       <section>
-        <p className="text-sm uppercase tracking-[0.18em] text-slate-500">
+        <p className="text-sm uppercase tracking-[0.18em] text-white/48">
           Approval queue
         </p>
-        <h1 className="mt-4 font-heading text-4xl text-slate-950">
+        <h1 className="mt-4 font-heading text-4xl text-white">
           Review pending claims and keep reimbursement moving.
         </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-white/68">
           Every pending expense lands here for action. Add a note when needed and
           approve or reject each claim directly from the queue.
         </p>

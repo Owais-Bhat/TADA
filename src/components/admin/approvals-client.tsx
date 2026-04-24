@@ -96,7 +96,7 @@ export function ApprovalsClient({
     <div className="space-y-5">
       <div className="grid gap-3 lg:grid-cols-[1fr_220px]">
         <div className="relative">
-          <Search className="pointer-events-none absolute left-4 top-3.5 h-4 w-4 text-slate-400" />
+          <Search className="pointer-events-none absolute left-4 top-3.5 h-4 w-4 text-white/36" />
           <Input
             className="pl-10"
             value={search}
@@ -109,11 +109,11 @@ export function ApprovalsClient({
         </Select>
       </div>
 
-      {message ? <p className="text-sm text-emerald-700">{message}</p> : null}
-      {error ? <p className="text-sm text-rose-700">{error}</p> : null}
+      {message ? <p className="text-sm text-emerald-200">{message}</p> : null}
+      {error ? <p className="text-sm text-rose-200">{error}</p> : null}
 
       {filtered.length === 0 ? (
-        <div className="rounded-[1.75rem] border border-slate-200 bg-white p-8 text-center text-sm text-slate-500">
+        <div className="rounded-[1.75rem] border border-white/10 bg-white/6 p-8 text-center text-sm text-white/62">
           No pending approvals right now.
         </div>
       ) : null}
@@ -125,20 +125,20 @@ export function ApprovalsClient({
           return (
             <div
               key={expense.id}
-              className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm"
+              className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20"
             >
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div>
-                  <p className="font-heading text-2xl text-slate-900">
+                  <p className="font-heading text-2xl text-white">
                     {formatCurrency(expense.amount)}
                   </p>
-                  <p className="mt-2 text-sm font-medium text-slate-700">
+                  <p className="mt-2 text-sm font-medium text-white/80">
                     {expense.requesterName} · {expense.categoryName}
                   </p>
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-1 text-sm text-white/52">
                     Expense date: {formatDate(expense.expenseDate)}
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-7 text-white/68">
                     {expense.description || "No description provided."}
                   </p>
                   {expense.receiptSignedUrl ? (
@@ -146,19 +146,19 @@ export function ApprovalsClient({
                       href={expense.receiptSignedUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-3 inline-flex text-sm font-medium text-violet-700 hover:text-violet-900"
+                      className="mt-3 inline-flex text-sm font-medium text-emerald-200 hover:text-emerald-100"
                     >
                       Open receipt
                     </a>
                   ) : null}
                 </div>
 
-                <div className="w-full max-w-md rounded-[1.5rem] bg-slate-50 p-4">
-                  <p className="text-sm font-medium text-slate-900">
+                <div className="w-full max-w-md rounded-[1.5rem] border border-white/8 bg-white/5 p-4">
+                  <p className="text-sm font-medium text-white">
                     Approval note
                   </p>
                   <Textarea
-                    className="mt-3 bg-white"
+                    className="mt-3"
                     value={decision[expense.id] ?? ""}
                     onChange={(e) =>
                       setDecision((current) => ({
@@ -170,7 +170,7 @@ export function ApprovalsClient({
                   />
                   <div className="mt-4 flex flex-wrap gap-2">
                     <Button
-                      className="border border-emerald-200 bg-emerald-100 text-emerald-900 hover:bg-emerald-200"
+                      className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
                       disabled={isPending}
                       onClick={() => handleDecision(expense.id, "Approved")}
                     >
@@ -178,7 +178,7 @@ export function ApprovalsClient({
                       Approve
                     </Button>
                     <Button
-                      className="border border-rose-200 bg-rose-100 text-rose-900 hover:bg-rose-200"
+                      className="border border-rose-300/18 bg-rose-500 text-white hover:bg-rose-400"
                       disabled={isPending}
                       onClick={() => handleDecision(expense.id, "Rejected")}
                     >

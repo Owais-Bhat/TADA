@@ -119,7 +119,7 @@ export function EmployeeManagementClient({
     <div className="space-y-5">
       <div className="grid gap-3 lg:grid-cols-[1fr_220px]">
         <div className="relative">
-          <Search className="pointer-events-none absolute left-4 top-3.5 h-4 w-4 text-slate-400" />
+          <Search className="pointer-events-none absolute left-4 top-3.5 h-4 w-4 text-white/36" />
           <Input
             className="pl-10"
             value={query}
@@ -140,8 +140,8 @@ export function EmployeeManagementClient({
         </Select>
       </div>
 
-      {message ? <p className="text-sm text-emerald-700">{message}</p> : null}
-      {error ? <p className="text-sm text-rose-700">{error}</p> : null}
+      {message ? <p className="text-sm text-emerald-200">{message}</p> : null}
+      {error ? <p className="text-sm text-rose-200">{error}</p> : null}
 
       <div className="space-y-4">
         {filtered.map((employee) => {
@@ -151,21 +151,21 @@ export function EmployeeManagementClient({
           return (
             <div
               key={employee.id}
-              className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm"
+              className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20"
             >
               <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr_0.9fr_0.7fr_auto] xl:items-center">
                 <div>
-                  <p className="font-heading text-xl text-slate-900">{employee.name}</p>
-                  <p className="mt-1 text-sm text-slate-500">{employee.email}</p>
+                  <p className="font-heading text-xl text-white">{employee.name}</p>
+                  <p className="mt-1 text-sm text-white/56">{employee.email}</p>
                   <div className="mt-3 flex flex-wrap items-center gap-2">
-                    <Badge className="bg-slate-100 text-slate-700">
+                    <Badge className="border-white/10 bg-white/6 text-white/78">
                       {employee.departmentName}
                     </Badge>
                     <Badge
                       className={
                         employee.isActive
-                          ? "bg-emerald-100 text-emerald-700"
-                          : "bg-slate-100 text-slate-500"
+                          ? "border-emerald-300/18 bg-emerald-500/16 text-emerald-100"
+                          : "border-white/10 bg-white/6 text-white/56"
                       }
                     >
                       {employee.isActive ? "Active" : "Inactive"}
@@ -212,7 +212,7 @@ export function EmployeeManagementClient({
                   ))}
                 </Select>
 
-                <label className="flex items-center gap-2 rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-700">
+                <label className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/78">
                   <input
                     type="checkbox"
                     checked={draft.isActive}
@@ -230,7 +230,7 @@ export function EmployeeManagementClient({
                 </label>
 
                 <Button
-                  className="border border-violet-200 bg-violet-100 text-violet-950 hover:bg-violet-200"
+                  className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
                   disabled={isSaving}
                   onClick={() => handleSave(employee.id)}
                 >

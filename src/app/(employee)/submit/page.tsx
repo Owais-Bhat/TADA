@@ -15,13 +15,13 @@ export default async function SubmitPage() {
   return (
     <div className="space-y-8">
       <section>
-        <p className="text-sm uppercase tracking-[0.18em] text-slate-500">
+        <p className="text-sm uppercase tracking-[0.18em] text-white/48">
           Submit expense
         </p>
-        <h1 className="mt-4 font-heading text-4xl text-slate-950">
+        <h1 className="mt-4 font-heading text-4xl text-white">
           Send a new claim for review.
         </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-white/68">
           Add the amount, category, and date, then attach the receipt if you have
           one ready. New submissions enter the pending approval queue immediately.
         </p>

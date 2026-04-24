@@ -99,17 +99,17 @@ export function LoginForm() {
 
   return (
     <GlassCard
-      className="w-full max-w-md border-slate-200 bg-white/92 text-slate-900 shadow-2xl shadow-violet-950/10"
+      className="w-full max-w-md border-emerald-400/14 bg-[#0b1715]/88 text-white shadow-2xl shadow-black/25"
       hover={false}
     >
       <div className="mb-8 text-center">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-100">
-          <ShieldCheck className="h-6 w-6 text-violet-700" />
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-400/12">
+          <ShieldCheck className="h-6 w-6 text-emerald-200" />
         </div>
         <h1 className="mb-2 font-heading text-3xl font-bold">
           <span className="grad-text">Welcome back</span>
         </h1>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-white/60">
           Sign in to manage expenses, approvals, and reimbursements.
         </p>
       </div>
@@ -124,7 +124,7 @@ export function LoginForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="bg-white"
+            className="bg-white/6"
           />
         </div>
 
@@ -137,7 +137,7 @@ export function LoginForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="bg-white"
+            className="bg-white/6"
           />
         </div>
 
@@ -145,7 +145,7 @@ export function LoginForm() {
 
         <Button
           type="submit"
-          className="w-full bg-violet-100 text-violet-950 hover:bg-violet-200"
+          className="w-full bg-emerald-500 text-white hover:bg-emerald-400"
           disabled={loading}
         >
           <ArrowRight className="mr-2 h-4 w-4" />
@@ -153,9 +153,9 @@ export function LoginForm() {
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-slate-500">
+      <p className="mt-6 text-center text-sm text-white/60">
         Don&apos;t have an account?{" "}
-        <Link href="/auth/register" className="text-violet-700 hover:underline">
+        <Link href="/auth/register" className="text-emerald-200 hover:underline">
           Sign up
         </Link>
       </p>

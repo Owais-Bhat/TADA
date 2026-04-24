@@ -89,14 +89,14 @@ export default async function OverviewPage() {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-[2rem] border border-slate-200 bg-white/92 px-6 py-8 text-slate-950 shadow-sm">
-        <p className="text-sm uppercase tracking-[0.18em] text-slate-500">
+      <section className="rounded-[2rem] border border-emerald-400/14 bg-[#0c1816] px-6 py-8 text-white shadow-lg shadow-black/20">
+        <p className="text-sm uppercase tracking-[0.18em] text-white/45">
           Admin overview
         </p>
         <h1 className="mt-4 font-heading text-4xl">
           Review approval volume and team spend at a glance.
         </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65">
           This is the control surface for managers, HR, and finance users. It
           keeps the current month readable without forcing you into a dense report
           view too early.
@@ -107,25 +107,25 @@ export default async function OverviewPage() {
         {cards.map((card) => (
           <div
             key={card.label}
-            className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm"
+            className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20"
           >
-            <p className="text-sm text-slate-500">{card.label}</p>
-            <p className="mt-3 font-heading text-3xl text-slate-950">{card.value}</p>
+            <p className="text-sm text-white/52">{card.label}</p>
+            <p className="mt-3 font-heading text-3xl text-white">{card.value}</p>
           </div>
         ))}
       </section>
 
       <section className="grid gap-5 lg:grid-cols-2">
-        <div className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm">
-          <p className="font-heading text-2xl text-slate-950">Top categories</p>
+        <div className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20">
+          <p className="font-heading text-2xl text-white">Top categories</p>
           <div className="mt-5 space-y-3">
             {categoryTotals.map((item) => (
               <div
                 key={item.name}
-                className="flex items-center justify-between rounded-[1.25rem] bg-slate-50 px-4 py-3"
+                className="flex items-center justify-between rounded-[1.25rem] border border-white/8 bg-white/5 px-4 py-3"
               >
-                <p className="text-sm font-medium text-slate-700">{item.name}</p>
-                <p className="font-heading text-xl text-slate-950">
+                <p className="text-sm font-medium text-white/78">{item.name}</p>
+                <p className="font-heading text-xl text-white">
                   {formatCurrency(item.total)}
                 </p>
               </div>
@@ -133,23 +133,23 @@ export default async function OverviewPage() {
           </div>
         </div>
 
-        <div className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm">
-          <p className="font-heading text-2xl text-slate-950">Department snapshot</p>
+        <div className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20">
+          <p className="font-heading text-2xl text-white">Department snapshot</p>
           <div className="mt-5 space-y-3">
             {departmentTotals.map((department) => (
               <div
                 key={department.name}
-                className="rounded-[1.25rem] bg-slate-50 px-4 py-3"
+                className="rounded-[1.25rem] border border-white/8 bg-white/5 px-4 py-3"
               >
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-slate-700">
+                  <p className="text-sm font-medium text-white/78">
                     {department.name}
                   </p>
-                  <p className="font-heading text-xl text-slate-950">
+                  <p className="font-heading text-xl text-white">
                     {formatCurrency(department.spend)}
                   </p>
                 </div>
-                <p className="mt-1 text-sm text-slate-500">
+                <p className="mt-1 text-sm text-white/52">
                   Budget: {formatCurrency(department.budget)}
                 </p>
               </div>

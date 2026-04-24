@@ -99,7 +99,7 @@ export function SubmitExpenseForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid gap-5 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm lg:grid-cols-2"
+      className="grid gap-5 rounded-[2rem] border border-white/10 bg-[#0c1916] p-6 shadow-lg shadow-black/20 lg:grid-cols-2"
     >
       <div className="space-y-2">
         <Label htmlFor="amount">Amount</Label>
@@ -162,8 +162,8 @@ export function SubmitExpenseForm({
         />
       </div>
 
-      <div className="rounded-[1.5rem] bg-slate-50 p-4 text-sm text-slate-600 lg:col-span-2">
-        <div className="flex items-center gap-2 font-medium text-slate-900">
+      <div className="rounded-[1.5rem] border border-white/8 bg-white/5 p-4 text-sm text-white/68 lg:col-span-2">
+        <div className="flex items-center gap-2 font-medium text-white">
           <Receipt className="h-4 w-4" />
           Receipt tips
         </div>
@@ -174,12 +174,12 @@ export function SubmitExpenseForm({
         </p>
       </div>
 
-      {error ? <p className="text-sm text-rose-700 lg:col-span-2">{error}</p> : null}
+      {error ? <p className="text-sm text-rose-200 lg:col-span-2">{error}</p> : null}
 
       <div className="lg:col-span-2">
         <Button
           type="submit"
-          className="border border-violet-200 bg-violet-100 text-violet-950 hover:bg-violet-200"
+          className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
           disabled={loading}
         >
           <ArrowRight className="mr-2 h-4 w-4" />

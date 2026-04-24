@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #090d18;
-  --foreground: #e7ebf7;
-  --surface: #12182a;
-  --surface-strong: #0f1423;
-  --card: rgba(255, 255, 255, 0.08);
-  --card-border: rgba(255, 255, 255, 0.12);
-  --muted: #1f2937;
-  --muted-foreground: #94a3b8;
-  --primary: #8b5cf6;
-  --primary-foreground: #f8f7ff;
+  --background: #06110f;
+  --foreground: #f3f7f5;
+  --surface: #0d1b18;
+  --surface-strong: #091311;
+  --card: rgba(8, 20, 17, 0.84);
+  --card-border: rgba(110, 231, 183, 0.16);
+  --muted: #17312c;
+  --muted-foreground: #b8cbc6;
+  --primary: #10b981;
+  --primary-foreground: #f7fffb;
   --success: #34d399;
   --warning: #fbbf24;
   --destructive: #fb7185;
@@ -39,8 +39,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #090d18;
-    --foreground: #e7ebf7;
+    --background: #06110f;
+    --foreground: #f3f7f5;
   }
 }
 
@@ -57,9 +57,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   background-image:
-    radial-gradient(circle at top left, rgba(139, 92, 246, 0.22), transparent 30%),
-    radial-gradient(circle at top right, rgba(52, 211, 153, 0.18), transparent 28%),
-    linear-gradient(180deg, #090d18 0%, #0f172a 55%, #f5f7fb 55%, #f5f7fb 100%);
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.26), transparent 28%),
+    radial-gradient(circle at top right, rgba(4, 120, 87, 0.22), transparent 24%),
+    radial-gradient(circle at 50% 100%, rgba(110, 231, 183, 0.1), transparent 28%),
+    linear-gradient(180deg, #06110f 0%, #081613 38%, #0b1d19 100%);
   background-attachment: fixed;
 }
 
@@ -76,9 +77,9 @@ textarea {
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+  background: rgba(8, 20, 17, 0.78);
+  border: 1px solid rgba(110, 231, 183, 0.12);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(24px);
 }
 
@@ -90,19 +91,19 @@ textarea {
 }
 
 .grad-text {
-  background: linear-gradient(135deg, #0f172a 10%, #6d28d9 55%, #059669 100%);
+  background: linear-gradient(135deg, #ffffff 12%, #d1fae5 48%, #34d399 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .page-shell {
   min-height: 100vh;
-  color: #0f172a;
+  color: #f3f7f5;
 }
 
 .page-surface {
-  background: rgba(255, 255, 255, 0.86);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+  background: rgba(10, 23, 20, 0.88);
+  border: 1px solid rgba(110, 231, 183, 0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.26);
   backdrop-filter: blur(18px);
 }

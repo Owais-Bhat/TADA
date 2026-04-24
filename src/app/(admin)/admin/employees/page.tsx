@@ -26,13 +26,13 @@ export default async function EmployeesPage() {
   return (
     <div className="space-y-8">
       <section>
-        <p className="text-sm uppercase tracking-[0.18em] text-slate-500">
+        <p className="text-sm uppercase tracking-[0.18em] text-white/48">
           Employee management
         </p>
-        <h1 className="mt-4 font-heading text-4xl text-slate-950">
+        <h1 className="mt-4 font-heading text-4xl text-white">
           Manage employee access and team structure.
         </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-white/68">
           Assign roles, move people between departments, and deactivate accounts
           when access should stop. Changes save directly back to Supabase.
         </p>

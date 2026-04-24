@@ -33,10 +33,10 @@ type CategoryOption = {
 };
 
 const statusClasses: Record<ExpenseStatus, string> = {
-  Pending: "bg-amber-100 text-amber-700 border-amber-200",
-  Approved: "bg-emerald-100 text-emerald-700 border-emerald-200",
-  Rejected: "bg-rose-100 text-rose-700 border-rose-200",
-  Settled: "bg-sky-100 text-sky-700 border-sky-200",
+  Pending: "bg-amber-500/16 text-amber-100 border-amber-300/16",
+  Approved: "bg-emerald-500/16 text-emerald-100 border-emerald-300/16",
+  Rejected: "bg-rose-500/16 text-rose-100 border-rose-300/16",
+  Settled: "bg-sky-500/16 text-sky-100 border-sky-300/16",
 };
 
 export function ExpensesClient({
@@ -188,11 +188,11 @@ export function ExpensesClient({
         </Select>
       </div>
 
-      {message ? <p className="text-sm text-emerald-700">{message}</p> : null}
-      {error ? <p className="text-sm text-rose-700">{error}</p> : null}
+      {message ? <p className="text-sm text-emerald-200">{message}</p> : null}
+      {error ? <p className="text-sm text-rose-200">{error}</p> : null}
 
       {filteredExpenses.length === 0 ? (
-        <div className="rounded-[1.75rem] border border-slate-200 bg-white p-8 text-center text-sm text-slate-500">
+        <div className="rounded-[1.75rem] border border-white/10 bg-white/6 p-8 text-center text-sm text-white/62">
           No expenses match your filters yet.
         </div>
       ) : null}
@@ -206,12 +206,12 @@ export function ExpensesClient({
           return (
             <div
               key={expense.id}
-              className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm"
+              className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20"
             >
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div>
                   <div className="flex flex-wrap items-center gap-3">
-                    <p className="font-heading text-2xl text-slate-900">
+                    <p className="font-heading text-2xl text-white">
                       {formatCurrency(expense.amount, expense.currency ?? "USD")}
                     </p>
                     <Badge
@@ -221,20 +221,20 @@ export function ExpensesClient({
                       {expense.status}
                     </Badge>
                   </div>
-                  <p className="mt-2 text-sm font-medium text-slate-700">
+                  <p className="mt-2 text-sm font-medium text-white/78">
                     {expense.categoryName}
                   </p>
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-1 text-sm text-white/52">
                     Submitted for {formatDate(expense.expenseDate)}
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-7 text-white/68">
                     {expense.description || "No description provided."}
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
                   <Button
-                    className="bg-slate-100 text-slate-800 hover:bg-slate-200"
+                    className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
                     onClick={() =>
                       setExpandedId((current) =>
                         current === expense.id ? null : expense.id,
@@ -247,14 +247,14 @@ export function ExpensesClient({
                   {expense.status === "Pending" ? (
                     <>
                       <Button
-                        className="bg-white text-slate-800 ring-1 ring-slate-200 hover:bg-slate-100"
+                        className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
                         onClick={() => startEditing(expense)}
                       >
                         <Pencil className="mr-2 h-4 w-4" />
                         Edit
                       </Button>
                       <Button
-                        className="bg-rose-50 text-rose-700 hover:bg-rose-100"
+                        className="border border-rose-300/18 bg-rose-500/16 text-rose-100 hover:bg-rose-500/24"
                         disabled={isPendingAction}
                         onClick={() => handleDelete(expense.id)}
                       >
@@ -267,7 +267,7 @@ export function ExpensesClient({
               </div>
 
               {isExpanded ? (
-                <div className="mt-5 rounded-[1.5rem] bg-slate-50 p-4">
+                <div className="mt-5 rounded-[1.5rem] border border-white/8 bg-white/5 p-4">
                   {isEditing ? (
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="space-y-2">
@@ -335,7 +335,7 @@ export function ExpensesClient({
                       </div>
                       <div className="flex gap-2 md:col-span-2">
                         <Button
-                          className="border border-violet-200 bg-violet-100 text-violet-950 hover:bg-violet-200"
+                          className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
                           disabled={isPendingAction}
                           onClick={() => handleSave(expense.id)}
                         >
@@ -343,7 +343,7 @@ export function ExpensesClient({
                           Save changes
                         </Button>
                         <Button
-                          className="bg-white text-slate-800 ring-1 ring-slate-200 hover:bg-slate-100"
+                          className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
                           onClick={() => setEditingId(null)}
                         >
                           Cancel
@@ -351,14 +351,14 @@ export function ExpensesClient({
                       </div>
                     </div>
                   ) : (
-                    <div className="flex flex-col gap-3 text-sm text-slate-600 md:flex-row md:items-center md:justify-between">
+                    <div className="flex flex-col gap-3 text-sm text-white/68 md:flex-row md:items-center md:justify-between">
                       <div className="space-y-2">
                         <p>
-                          <span className="font-medium text-slate-900">Category:</span>{" "}
+                          <span className="font-medium text-white">Category:</span>{" "}
                           {expense.categoryName}
                         </p>
                         <p>
-                          <span className="font-medium text-slate-900">Status:</span>{" "}
+                          <span className="font-medium text-white">Status:</span>{" "}
                           {expense.status}
                         </p>
                       </div>
@@ -367,13 +367,13 @@ export function ExpensesClient({
                           href={expense.receiptSignedUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center text-sm font-medium text-violet-700 hover:text-violet-900"
+                          className="inline-flex items-center text-sm font-medium text-emerald-200 hover:text-emerald-100"
                         >
                           <FileText className="mr-2 h-4 w-4" />
                           Open receipt
                         </a>
                       ) : (
-                        <p className="text-sm text-slate-500">No receipt uploaded</p>
+                        <p className="text-sm text-white/52">No receipt uploaded</p>
                       )}
                     </div>
                   )}

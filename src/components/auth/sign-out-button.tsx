@@ -12,7 +12,7 @@ export function SignOutButton() {
 
   return (
     <Button
-      className="w-full justify-center border border-slate-200 bg-white text-slate-800 hover:bg-slate-100"
+      className="w-full justify-center border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
       disabled={isPending}
       onClick={() => {
         startTransition(async () => {

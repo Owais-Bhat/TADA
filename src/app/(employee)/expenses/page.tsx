@@ -48,13 +48,13 @@ export default async function ExpensesPage() {
   return (
     <div className="space-y-8">
       <section>
-        <p className="text-sm uppercase tracking-[0.18em] text-slate-500">
+        <p className="text-sm uppercase tracking-[0.18em] text-white/48">
           My expenses
         </p>
-        <h1 className="mt-4 font-heading text-4xl text-slate-950">
+        <h1 className="mt-4 font-heading text-4xl text-white">
           Review, filter, and update your claims.
         </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-white/68">
           Pending expenses stay editable until someone reviews them. Once a claim
           is approved, rejected, or settled, it becomes a read-only record.
         </p>

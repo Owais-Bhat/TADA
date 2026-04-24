@@ -79,14 +79,14 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-[2rem] border border-slate-200 bg-white/92 px-6 py-8 text-slate-950 shadow-sm">
-        <p className="text-sm uppercase tracking-[0.18em] text-slate-500">
+      <section className="rounded-[2rem] border border-emerald-400/14 bg-[#0c1816] px-6 py-8 text-white shadow-lg shadow-black/20">
+        <p className="text-sm uppercase tracking-[0.18em] text-white/45">
           Employee dashboard
         </p>
         <h1 className="mt-4 font-heading text-4xl">
           Welcome back, {profile.name.split(" ")[0]}.
         </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65">
           Track how much you have claimed this month, review the latest expense
           status changes, and submit your next receipt when you are ready.
         </p>
@@ -96,26 +96,26 @@ export default async function DashboardPage() {
         {cards.map((card) => (
           <div
             key={card.label}
-            className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm"
+            className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20"
           >
-            <p className="text-sm text-slate-500">{card.label}</p>
-            <p className="mt-3 font-heading text-3xl text-slate-950">{card.value}</p>
+            <p className="text-sm text-white/52">{card.label}</p>
+            <p className="mt-3 font-heading text-3xl text-white">{card.value}</p>
           </div>
         ))}
       </section>
 
       <section className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20">
           <div className="flex items-center justify-between">
             <div>
-              <p className="font-heading text-2xl text-slate-950">Recent expenses</p>
-              <p className="mt-1 text-sm text-slate-500">
+              <p className="font-heading text-2xl text-white">Recent expenses</p>
+              <p className="mt-1 text-sm text-white/52">
                 Your five most recent claims.
               </p>
             </div>
             <Link
               href="/expenses"
-              className="inline-flex items-center text-sm font-medium text-violet-700 hover:text-violet-900"
+              className="inline-flex items-center text-sm font-medium text-emerald-200 hover:text-emerald-100"
             >
               View all
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -124,32 +124,32 @@ export default async function DashboardPage() {
 
           <div className="mt-5 space-y-4">
             {recent.length === 0 ? (
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-white/52">
                 No expenses yet. Your new submissions will show up here.
               </p>
             ) : (
               recent.map((expense) => (
                 <div
                   key={expense.id}
-                  className="rounded-[1.5rem] bg-slate-50 p-4"
+                  className="rounded-[1.5rem] border border-white/8 bg-white/5 p-4"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
-                      <p className="font-medium text-slate-900">
+                      <p className="font-medium text-white">
                         {categoryMap.get(expense.category_id ?? "") ?? "Uncategorized"}
                       </p>
-                      <p className="mt-1 text-sm text-slate-500">
+                      <p className="mt-1 text-sm text-white/52">
                         {formatDate(expense.expense_date)}
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="font-heading text-2xl text-slate-900">
+                      <p className="font-heading text-2xl text-white">
                         {formatCurrency(expense.amount, expense.currency ?? "USD")}
                       </p>
-                      <p className="text-sm text-slate-500">{expense.status}</p>
+                      <p className="text-sm text-white/52">{expense.status}</p>
                     </div>
                   </div>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-7 text-white/68">
                     {expense.description || "No description provided."}
                   </p>
                 </div>
@@ -158,24 +158,24 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        <div className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm">
-          <p className="font-heading text-2xl text-slate-950">Quick actions</p>
+        <div className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20">
+          <p className="font-heading text-2xl text-white">Quick actions</p>
           <div className="mt-5 space-y-3">
             <Link
               href="/submit"
-              className="block rounded-[1.5rem] border border-violet-200 bg-violet-100 px-5 py-4 text-violet-950 transition hover:bg-violet-200"
+              className="block rounded-[1.5rem] border border-emerald-300/18 bg-emerald-500/18 px-5 py-4 text-white transition hover:bg-emerald-500/26"
             >
               <p className="font-medium">Submit a new expense</p>
-              <p className="mt-1 text-sm text-violet-800">
+              <p className="mt-1 text-sm text-white/70">
                 Upload a receipt and create a claim in one step.
               </p>
             </Link>
             <Link
               href="/expenses"
-              className="block rounded-[1.5rem] border border-slate-200 px-5 py-4 transition hover:bg-slate-50"
+              className="block rounded-[1.5rem] border border-white/10 bg-white/5 px-5 py-4 transition hover:bg-white/10"
             >
-              <p className="font-medium text-slate-900">Review my history</p>
-              <p className="mt-1 text-sm text-slate-500">
+              <p className="font-medium text-white">Review my history</p>
+              <p className="mt-1 text-sm text-white/56">
                 Filter past submissions and adjust pending claims.
               </p>
             </Link>
