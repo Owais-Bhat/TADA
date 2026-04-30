@@ -58,7 +58,7 @@ export default async function ApprovalsPage() {
         <p className="text-sm uppercase tracking-[0.18em] text-white/48">
           Approval queue
         </p>
-        <h1 className="mt-4 font-heading text-4xl text-white">
+        <h1 className="page-heading mt-4 font-heading text-white">
           Review pending claims and keep reimbursement moving.
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-white/68">

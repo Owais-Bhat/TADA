@@ -79,11 +79,11 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-[2rem] border border-emerald-400/14 bg-[#0c1816] px-6 py-8 text-white shadow-lg shadow-black/20">
+      <section className="rounded-[2rem] border border-emerald-400/14 bg-[#0c1816] px-5 py-6 text-white shadow-lg shadow-black/20 sm:px-6 sm:py-8">
         <p className="text-sm uppercase tracking-[0.18em] text-white/45">
           Employee dashboard
         </p>
-        <h1 className="mt-4 font-heading text-4xl">
+        <h1 className="page-heading mt-4 font-heading">
           Welcome back, {profile.name.split(" ")[0]}.
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65">
@@ -106,7 +106,7 @@ export default async function DashboardPage() {
 
       <section className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="font-heading text-2xl text-white">Recent expenses</p>
               <p className="mt-1 text-sm text-white/52">
@@ -142,7 +142,7 @@ export default async function DashboardPage() {
                         {formatDate(expense.expense_date)}
                       </p>
                     </div>
-                    <div className="text-right">
+                    <div className="sm:text-right">
                       <p className="font-heading text-2xl text-white">
                         {formatCurrency(expense.amount, expense.currency ?? "USD")}
                       </p>

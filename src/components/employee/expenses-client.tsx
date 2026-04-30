@@ -206,7 +206,7 @@ export function ExpensesClient({
           return (
             <div
               key={expense.id}
-              className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20"
+              className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-4 shadow-lg shadow-black/20 sm:p-5"
             >
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div>
@@ -232,9 +232,9 @@ export function ExpensesClient({
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:flex-wrap">
                   <Button
-                    className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
+                    className="w-full border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400 sm:w-auto"
                     onClick={() =>
                       setExpandedId((current) =>
                         current === expense.id ? null : expense.id,
@@ -247,14 +247,14 @@ export function ExpensesClient({
                   {expense.status === "Pending" ? (
                     <>
                       <Button
-                        className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
+                        className="w-full border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400 sm:w-auto"
                         onClick={() => startEditing(expense)}
                       >
                         <Pencil className="mr-2 h-4 w-4" />
                         Edit
                       </Button>
                       <Button
-                        className="border border-rose-300/18 bg-rose-500/16 text-rose-100 hover:bg-rose-500/24"
+                        className="w-full border border-rose-300/18 bg-rose-500/16 text-rose-100 hover:bg-rose-500/24 sm:w-auto"
                         disabled={isPendingAction}
                         onClick={() => handleDelete(expense.id)}
                       >
@@ -333,9 +333,9 @@ export function ExpensesClient({
                           }
                         />
                       </div>
-                      <div className="flex gap-2 md:col-span-2">
+                      <div className="flex flex-col gap-2 sm:flex-row md:col-span-2">
                         <Button
-                          className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
+                          className="w-full border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400 sm:w-auto"
                           disabled={isPendingAction}
                           onClick={() => handleSave(expense.id)}
                         >
@@ -343,7 +343,7 @@ export function ExpensesClient({
                           Save changes
                         </Button>
                         <Button
-                          className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
+                          className="w-full border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400 sm:w-auto"
                           onClick={() => setEditingId(null)}
                         >
                           Cancel

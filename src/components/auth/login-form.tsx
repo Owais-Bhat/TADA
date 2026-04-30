@@ -99,7 +99,7 @@ export function LoginForm() {
 
   return (
     <GlassCard
-      className="w-full max-w-md border-emerald-400/14 bg-[#0b1715]/88 text-white shadow-2xl shadow-black/25"
+      className="w-full max-w-md border-emerald-400/14 bg-[#0b1715]/88 p-5 text-white shadow-2xl shadow-black/25 sm:p-6"
       hover={false}
     >
       <div className="mb-8 text-center">

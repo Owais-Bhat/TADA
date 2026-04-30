@@ -99,7 +99,7 @@ export function SubmitExpenseForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid gap-5 rounded-[2rem] border border-white/10 bg-[#0c1916] p-6 shadow-lg shadow-black/20 lg:grid-cols-2"
+      className="grid gap-5 rounded-[2rem] border border-white/10 bg-[#0c1916] p-4 shadow-lg shadow-black/20 sm:p-6 lg:grid-cols-2"
     >
       <div className="space-y-2">
         <Label htmlFor="amount">Amount</Label>
@@ -179,7 +179,7 @@ export function SubmitExpenseForm({
       <div className="lg:col-span-2">
         <Button
           type="submit"
-          className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
+          className="w-full border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400 sm:w-auto"
           disabled={loading}
         >
           <ArrowRight className="mr-2 h-4 w-4" />

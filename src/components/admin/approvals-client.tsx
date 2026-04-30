@@ -125,7 +125,7 @@ export function ApprovalsClient({
           return (
             <div
               key={expense.id}
-              className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20"
+              className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-4 shadow-lg shadow-black/20 sm:p-5"
             >
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div>
@@ -133,7 +133,7 @@ export function ApprovalsClient({
                     {formatCurrency(expense.amount)}
                   </p>
                   <p className="mt-2 text-sm font-medium text-white/80">
-                    {expense.requesterName} · {expense.categoryName}
+                    {expense.requesterName} / {expense.categoryName}
                   </p>
                   <p className="mt-1 text-sm text-white/52">
                     Expense date: {formatDate(expense.expenseDate)}
@@ -153,10 +153,8 @@ export function ApprovalsClient({
                   ) : null}
                 </div>
 
-                <div className="w-full max-w-md rounded-[1.5rem] border border-white/8 bg-white/5 p-4">
-                  <p className="text-sm font-medium text-white">
-                    Approval note
-                  </p>
+                <div className="w-full rounded-[1.5rem] border border-white/8 bg-white/5 p-4 lg:max-w-md">
+                  <p className="text-sm font-medium text-white">Approval note</p>
                   <Textarea
                     className="mt-3"
                     value={decision[expense.id] ?? ""}
@@ -168,9 +166,9 @@ export function ApprovalsClient({
                     }
                     placeholder="Optional note for the employee or finance log"
                   />
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
                     <Button
-                      className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
+                      className="w-full border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400 sm:w-auto"
                       disabled={isPending}
                       onClick={() => handleDecision(expense.id, "Approved")}
                     >
@@ -178,7 +176,7 @@ export function ApprovalsClient({
                       Approve
                     </Button>
                     <Button
-                      className="border border-rose-300/18 bg-rose-500 text-white hover:bg-rose-400"
+                      className="w-full border border-rose-300/18 bg-rose-500 text-white hover:bg-rose-400 sm:w-auto"
                       disabled={isPending}
                       onClick={() => handleDecision(expense.id, "Rejected")}
                     >

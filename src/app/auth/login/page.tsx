@@ -12,13 +12,13 @@ export default async function LoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center px-4 py-8 text-white sm:px-6">
+    <main className="flex min-h-screen items-start px-4 py-6 text-white sm:px-6 sm:py-8 lg:items-center">
       <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <section className="glass-panel rounded-[2.5rem] p-8 sm:p-10">
           <p className="text-sm uppercase tracking-[0.28em] text-white/50">
             Employee and admin access
           </p>
-          <h1 className="mt-5 max-w-xl font-heading text-5xl font-bold leading-tight">
+          <h1 className="mt-5 max-w-xl font-heading text-4xl font-bold leading-tight sm:text-5xl">
             Sign in to keep claims moving from submission to reimbursement.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-8 text-white/68">

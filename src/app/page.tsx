@@ -38,37 +38,37 @@ export default async function Home() {
   const primaryLabel = profile ? "Open workspace" : "Sign in";
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-4 py-6 text-white sm:px-6">
+    <main className="relative min-h-screen overflow-hidden px-3 py-4 text-white sm:px-5 sm:py-6">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(139,92,246,0.32),transparent_28%),radial-gradient(circle_at_75%_20%,rgba(52,211,153,0.2),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(96,165,250,0.12),transparent_22%)]" />
       <div className="pointer-events-none absolute inset-0 soft-grid opacity-30" />
 
       <div className="relative mx-auto max-w-7xl">
-        <section className="glass-panel rounded-[2.5rem] px-6 py-10 sm:px-10 lg:px-14 lg:py-14">
+        <section className="glass-panel rounded-[2.25rem] px-5 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-14">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">
                 ExpenseFlow MVP
               </p>
-              <h1 className="mt-4 max-w-4xl font-heading text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+              <h1 className="mt-4 max-w-4xl font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl xl:text-7xl">
                 Expense management for teams that need less friction and better
                 visibility.
               </h1>
             </div>
-            <div className="rounded-full border border-white/12 bg-white/6 px-4 py-2 text-sm text-white/72">
+            <div className="rounded-full border border-white/12 bg-white/6 px-4 py-2 text-center text-sm text-white/72">
               Built with Next.js 16 + Supabase
             </div>
           </div>
 
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/68">
+          <p className="mt-6 max-w-2xl text-base leading-7 text-white/68 sm:mt-8 sm:text-lg sm:leading-8">
             A dual-portal experience for employees and finance teams: submit
             receipts, follow approval status, and keep admin review clean and
             fast from one shared product.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <Link
               href={primaryHref}
-              className="inline-flex items-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition hover:bg-emerald-400"
+              className="inline-flex w-full items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition hover:bg-emerald-400 sm:w-auto"
             >
               {primaryLabel}
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -76,7 +76,7 @@ export default async function Home() {
             {!profile ? (
               <Link
                 href="/auth/register"
-                className="inline-flex items-center rounded-full border border-white/12 bg-white/6 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/12"
+                className="inline-flex w-full items-center justify-center rounded-full border border-white/12 bg-white/6 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/12 sm:w-auto"
               >
                 Create account
               </Link>
@@ -105,8 +105,8 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="mt-6 grid gap-6 lg:grid-cols-2">
-          <div className="glass-panel rounded-[2rem] p-8">
+        <section className="mt-6 grid gap-4 lg:grid-cols-2 lg:gap-6">
+          <div className="glass-panel rounded-[2rem] p-5 sm:p-6 lg:p-8">
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/12">
                 <Wallet className="h-6 w-6 text-emerald-200" />
@@ -125,7 +125,7 @@ export default async function Home() {
             </ul>
           </div>
 
-          <div className="glass-panel rounded-[2rem] p-8">
+          <div className="glass-panel rounded-[2rem] p-5 sm:p-6 lg:p-8">
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-400/12">
                 <ShieldCheck className="h-6 w-6 text-emerald-200" />
@@ -145,8 +145,8 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="mt-6 grid gap-6 pb-6 md:grid-cols-3">
-          <div className="glass-panel rounded-[2rem] p-6">
+        <section className="mt-6 grid gap-4 pb-4 sm:pb-6 md:grid-cols-3 md:gap-6">
+          <div className="glass-panel rounded-[2rem] p-5 sm:p-6">
             <BarChart3 className="h-6 w-6 text-emerald-200" />
             <p className="mt-4 font-heading text-2xl">Live-ready data model</p>
             <p className="mt-3 text-sm leading-7 text-white/62">
@@ -154,7 +154,7 @@ export default async function Home() {
               departments already map cleanly to the Supabase schema in this repo.
             </p>
           </div>
-          <div className="glass-panel rounded-[2rem] p-6">
+          <div className="glass-panel rounded-[2rem] p-5 sm:p-6">
             <FileClock className="h-6 w-6 text-emerald-200" />
             <p className="mt-4 font-heading text-2xl">Approval-first flow</p>
             <p className="mt-3 text-sm leading-7 text-white/62">
@@ -162,7 +162,7 @@ export default async function Home() {
               status visibility, and clear ownership across roles.
             </p>
           </div>
-          <div className="glass-panel rounded-[2rem] p-6">
+          <div className="glass-panel rounded-[2rem] p-5 sm:p-6">
             <CreditCard className="h-6 w-6 text-emerald-200" />
             <p className="mt-4 font-heading text-2xl">Receipt storage included</p>
             <p className="mt-3 text-sm leading-7 text-white/62">

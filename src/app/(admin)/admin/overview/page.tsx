@@ -89,11 +89,11 @@ export default async function OverviewPage() {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-[2rem] border border-emerald-400/14 bg-[#0c1816] px-6 py-8 text-white shadow-lg shadow-black/20">
+      <section className="rounded-[2rem] border border-emerald-400/14 bg-[#0c1816] px-5 py-6 text-white shadow-lg shadow-black/20 sm:px-6 sm:py-8">
         <p className="text-sm uppercase tracking-[0.18em] text-white/45">
           Admin overview
         </p>
-        <h1 className="mt-4 font-heading text-4xl">
+        <h1 className="page-heading mt-4 font-heading">
           Review approval volume and team spend at a glance.
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65">
@@ -122,7 +122,7 @@ export default async function OverviewPage() {
             {categoryTotals.map((item) => (
               <div
                 key={item.name}
-                className="flex items-center justify-between rounded-[1.25rem] border border-white/8 bg-white/5 px-4 py-3"
+                className="flex flex-wrap items-center justify-between gap-2 rounded-[1.25rem] border border-white/8 bg-white/5 px-4 py-3"
               >
                 <p className="text-sm font-medium text-white/78">{item.name}</p>
                 <p className="font-heading text-xl text-white">
@@ -141,7 +141,7 @@ export default async function OverviewPage() {
                 key={department.name}
                 className="rounded-[1.25rem] border border-white/8 bg-white/5 px-4 py-3"
               >
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="text-sm font-medium text-white/78">
                     {department.name}
                   </p>

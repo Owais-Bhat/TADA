@@ -151,12 +151,12 @@ export function EmployeeManagementClient({
           return (
             <div
               key={employee.id}
-              className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-5 shadow-lg shadow-black/20"
+              className="rounded-[1.75rem] border border-white/10 bg-[#0c1916] p-4 shadow-lg shadow-black/20 sm:p-5"
             >
-              <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr_0.9fr_0.7fr_auto] xl:items-center">
+              <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-[1.1fr_0.9fr_0.9fr_0.7fr_auto] xl:items-center">
                 <div>
                   <p className="font-heading text-xl text-white">{employee.name}</p>
-                  <p className="mt-1 text-sm text-white/56">{employee.email}</p>
+                  <p className="mt-1 break-all text-sm text-white/56">{employee.email}</p>
                   <div className="mt-3 flex flex-wrap items-center gap-2">
                     <Badge className="border-white/10 bg-white/6 text-white/78">
                       {employee.departmentName}
@@ -230,7 +230,7 @@ export function EmployeeManagementClient({
                 </label>
 
                 <Button
-                  className="border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400"
+                  className="w-full border border-emerald-300/18 bg-emerald-500 text-white hover:bg-emerald-400 xl:w-auto"
                   disabled={isSaving}
                   onClick={() => handleSave(employee.id)}
                 >
